@@ -24,7 +24,7 @@ typedef struct HashTable HashTable;
  * the key whose pointer is passed as an argument
  * @return 
  */
-HashTable *HashTable_new(int size, int (*hash_function)(void *));
+HashTable *HashTable_new(int size, int (*hash_function)(void *), int (*key_compare)(void *, void *));
 
 /**
  * Deallocate all internally allocated memory

@@ -7,7 +7,7 @@
 /////////////////////
 
 /**
- * Opaque Hashtabe struct
+ * Opaque HashTable struct
  */
 typedef struct HashTable HashTable;
 
@@ -17,12 +17,14 @@ typedef struct HashTable HashTable;
 //////////////////////////////////
 
 /**
- * Allocates space for and initializes a Hashtable struct and returns a pointer
+ * Allocates space for and initializes a HashTable struct and returns a pointer
  * to it
  * @param  size          Fixed size for the hash table
  * @param  hash_function Pointer to a hash function that returns the hash for
  * the key whose pointer is passed as an argument
- * @return 
+ * @param  key_compare   Pointer to a function that returns a 0 if both the keys
+ * referenced by the passed pointers are equal
+ * @return Pointer to a new HashTable struct
  */
 HashTable *HashTable_new(int size, int (*hash_function)(void *), int (*key_compare)(void *, void *));
 

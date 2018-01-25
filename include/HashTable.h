@@ -53,7 +53,7 @@ void HashTable_add(HashTable *htable_ptr, void *key, void *value);
  * @param  key        Pointer to key which will be used to search
  * @return            Pointer to value if found, otherwise NULL
  */
-void *HashTable_find(HashTable *htable_ptr, void *key);
+void *HashTable_get(HashTable *htable_ptr, void *key);
 
 
 #endif

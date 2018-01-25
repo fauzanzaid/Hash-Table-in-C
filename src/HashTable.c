@@ -76,7 +76,7 @@ void HashTable_add(HashTable *htable_ptr, void *key, void *value){
 	htable_ptr->table[index] = new;
 }
 
-void *HashTable_find(HashTable *htable_ptr, void *key){
+void *HashTable_get(HashTable *htable_ptr, void *key){
 	int index = htable_ptr->hash_function(key) % htable_ptr->size;
 
 	Node *node = htable_ptr->table[index];

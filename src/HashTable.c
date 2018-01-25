@@ -1,4 +1,5 @@
 #include <stdlib.h>
+#include <string.h>
 
 #include "HashTable.h"
 
@@ -27,7 +28,7 @@ typedef struct HashTable{
 // Constructors and Destructors //
 //////////////////////////////////
 
-HashTable *HashTable_new(int size, int (*hash_function)(void *), int (*key_compare)(void *, void *));{
+HashTable *HashTable_new(int size, int (*hash_function)(void *), int (*key_compare)(void *, void *)){
 	HashTable *htable_ptr = malloc(sizeof(HashTable));
 
 	htable_ptr->size = size;
@@ -43,7 +44,7 @@ void *HashTable_destroy(HashTable *htable_ptr){
 
 	Node *node_cur, *node_next;
 
-	for (int i = 0; i < size; ++i)
+	for (int i = 0; i < htable_ptr->size; ++i)
 	{
 		node_cur = htable_ptr->table[i];
 
@@ -72,7 +73,7 @@ void HashTable_add(HashTable *htable_ptr, void *key, void *value){
 	int index = htable_ptr->hash_function(key) % htable_ptr->size;
 
 	new->next = htable_ptr->table[index];
-	table[index] = new;
+	htable_ptr->table[index] = new;
 }
 
 void *HashTable_find(HashTable *htable_ptr, void *key){
@@ -84,7 +85,7 @@ void *HashTable_find(HashTable *htable_ptr, void *key){
 	{
 		if(node == NULL)
 			return NULL;
-		else if(key_compare(key, node->key) == 0)
+		else if(htable_ptr->key_compare(key, node->key) == 0)
 			return node->value;
 		else
 			node = node->next;

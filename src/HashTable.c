@@ -91,3 +91,21 @@ void *HashTable_get(HashTable *htable_ptr, void *key){
 			node = node->next;
 	}
 }
+
+void HashTable_set(HashTable *htable_ptr, void *key, void *value){
+	int index = htable_ptr->hash_function(key) % htable_ptr->size;
+
+	Node *node = htable_ptr->table[index];
+
+	while(1)
+	{
+		if(node == NULL)
+			return;
+		else if(htable_ptr->key_compare(key, node->key) == 0){
+			node->value = value;
+			return;
+		}
+		else
+			node = node->next;
+	}	
+}

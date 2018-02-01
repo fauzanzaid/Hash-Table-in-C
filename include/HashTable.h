@@ -55,5 +55,15 @@ void HashTable_add(HashTable *htable_ptr, void *key, void *value);
  */
 void *HashTable_get(HashTable *htable_ptr, void *key);
 
+/**
+ * Changes an already existing value in the hashtable
+ * @param htable_ptr Pointer to a HashTable struct
+ * @param key        Pointer to key which will be used to search
+ * @param value      Pointer to new value which will replace older at the key's
+ * index
+ */
+void HashTable_set(HashTable *htable_ptr, void *key, void *value);
+
+
 
 #endif

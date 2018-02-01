@@ -25,6 +25,21 @@ int main(int argc, char const *argv[])
 		printf("[%d]\t%d\n", keys[i], value);
 	}
 
+
+	printf("Setting new values\n");
+	int values_new[10] = {-32,-12,-54,-23,-87,-23,-123,-54,-76,23};
+
+	for (int i = 0; i < 10; ++i)
+	{
+		HashTable_set(table, &keys[i], &values_new[i]);
+	}
+
+	for (int i = 0; i < 10; ++i)
+	{
+		int value = *(int *)HashTable_get(table, &keys[i]);
+		printf("[%d]\t%d\n", keys[i], value);
+	}
+
 	return 0;
 }
 

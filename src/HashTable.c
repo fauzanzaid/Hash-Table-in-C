@@ -56,6 +56,7 @@ void *HashTable_destroy(HashTable *htable_ptr){
 		}
 	}
 
+	free(htable_ptr->table);
 	free(htable_ptr);
 }
 

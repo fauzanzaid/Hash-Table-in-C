@@ -78,7 +78,11 @@ void HashTable_add(HashTable *htable_ptr, void *key, void *value){
 }
 
 void *HashTable_get(HashTable *htable_ptr, void *key){
-	int index = htable_ptr->hash_function(key) % htable_ptr->size;
+	int hash = htable_ptr->hash_function(key);
+
+	// Ensure hash is positive
+	if(hash<0)	hash *= -1;
+	int index = hash % htable_ptr->size;
 
 	Node *node = htable_ptr->table[index];
 

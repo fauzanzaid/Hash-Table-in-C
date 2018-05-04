@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 3.5)
-project( HashTable VERSION 0.1.1 )
+project( HashTable VERSION 0.1.0 )
 
 add_library(HashTable STATIC src/HashTable.c)
 
